@@ -1,7 +1,7 @@
 .form-container {
   width: 350px;
   margin: 40px auto;
-  background: white;
+  background:white;
   padding: 25px;
   border-radius: 12px;
   box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
@@ -10,7 +10,7 @@
 .form-container h2 {
   text-align: center;
   margin-bottom: 15px;
-  color: #444;
+  color: #00D4FF;
 }
 
 form input, form button {
@@ -18,7 +18,10 @@ form input, form button {
   padding: 10px;
   margin-top: 12px;
   border-radius: 6px;
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
+  border:none;
+  outline: none;
+  
 }
 
 form button {
@@ -39,11 +42,23 @@ form button:hover {
    width: 95%;
   padding: 10px;
   margin-top: 12px;
-  border-radius: 6px;
-  border: 1px solid #ddd;
+  border: none;
   gap: 20px;
   color: gray;
+  font-size: 15px;
 }
 .gender-container select{
   color: gray;
+  width: 70%;
+  height: 30px;
+  border: 2px solid #00D4FF ;
+  outline: none;
+  border-radius: 10px;
+}
+hr{
+  width: 95%;
+  height: 2px;
+  background: #00D4FF;
+  border: none;
+  margin-bottom: px;
 }
