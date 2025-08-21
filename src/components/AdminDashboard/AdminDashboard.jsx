@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./AdminDashboard.css";
+import { FaEdit, FaTrash } from "react-icons/fa";
+
 
 const AdminDashboard = () => {
   const [users, setUsers] = useState([]);
@@ -18,12 +20,19 @@ const AdminDashboard = () => {
     setUsers(storedUsers);
   }, []);
 
+
   const handleDelete = (index) => {
-    const updatedUsers = [...users];
-    updatedUsers.splice(index, 1);
-    setUsers(updatedUsers);
-    localStorage.setItem("users", JSON.stringify(updatedUsers));
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this user?"
+    );
+    if (confirmDelete) {
+      const updatedUsers = [...users];
+      updatedUsers.splice(index, 1);
+      setUsers(updatedUsers);
+      localStorage.setItem("users", JSON.stringify(updatedUsers));
+    }
   };
+
 
   const handleEdit = (index) => {
     setEditIndex(index);
@@ -52,13 +61,16 @@ const AdminDashboard = () => {
     <div className="dashboard-container">
       <h2>Registered Users</h2>
 
-      <input
-        type="text"
-        placeholder="Search users..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        className="search"
-      />
+      <div className="search-container">
+        <input
+          type="text"
+          placeholder="Search users..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="search"
+        />
+      </div>
+
 
       <table>
         <thead>
@@ -133,11 +145,16 @@ const AdminDashboard = () => {
                     <td>{user.job}</td>
                     <td>{user.gender}</td>
                     <td>
-                      <button onClick={() => handleEdit(index)}>Edit</button>
+                      <button className="edit-btn" onClick={() => handleEdit(index)}>
+                        <FaEdit />
+                      </button>
                     </td>
                     <td>
-                      <button onClick={() => handleDelete(index)}>Delete</button>
+                      <button className="delete-btn" onClick={() => handleDelete(index)}>
+                        <FaTrash />
+                      </button>
                     </td>
+
                   </>
                 )}
               </tr>
